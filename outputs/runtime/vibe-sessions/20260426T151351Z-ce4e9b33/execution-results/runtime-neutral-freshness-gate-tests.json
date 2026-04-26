@@ -1,0 +1,36 @@
+{
+  "unit_id": "runtime-neutral-freshness-gate-tests",
+  "kind": "python_command",
+  "status": "failed",
+  "started_at": "2026-04-26T15:14:02.694637Z",
+  "finished_at": "2026-04-26T15:14:02.903791Z",
+  "command": "C:\\Users\\wuaha\\AppData\\Local\\Python\\bin\\python3.exe",
+  "arguments": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests/runtime_neutral",
+    "-p",
+    "test_freshness_gate.py",
+    "-v"
+  ],
+  "display_command": "C:\\Users\\wuaha\\AppData\\Local\\Python\\bin\\python3.exe -m unittest discover -s tests/runtime_neutral -p test_freshness_gate.py -v",
+  "cwd": "C:\\Users\\wuaha\\.codex\\skills\\vibe",
+  "timeout_seconds": 240,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "timed_out": false,
+  "stdout_path": "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\execution-logs\\runtime-neutral-freshness-gate-tests.stdout.log",
+  "stderr_path": "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\execution-logs\\runtime-neutral-freshness-gate-tests.stderr.log",
+  "stdout_preview": [],
+  "stderr_preview": [
+    "Traceback (most recent call last):",
+    "  File \"<frozen runpy>\", line 198, in _run_module_as_main",
+    "  File \"<frozen runpy>\", line 88, in _run_code",
+    "  File \"C:\\Users\\wuaha\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\unittest\\__main__.py\", line 18, in <module>",
+    "    main(module=None)"
+  ],
+  "expected_artifacts": [],
+  "verification_passed": false
+}

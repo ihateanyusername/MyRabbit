@@ -1,0 +1,16 @@
+{
+  "lane": "cognee",
+  "stage": "xl_plan",
+  "task": "[$vibe](C:\\Users\\wuaha\\.codex\\skills\\vibe\\SKILL.md) 阅读文档.md和里面的图片素材，整理需求",
+  "top_k": 3,
+  "max_chars_per_item": 240,
+  "keywords": [
+    "vibe",
+    "users",
+    "wuaha",
+    "codex",
+    "skills",
+    "skill"
+  ],
+  "project_key_source": null
+}

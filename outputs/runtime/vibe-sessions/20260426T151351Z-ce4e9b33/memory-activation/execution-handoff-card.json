@@ -1,0 +1,12 @@
+{
+  "stage": "plan_execute",
+  "owner": "state_store",
+  "status": "fallback_local_artifact",
+  "generated_at": "2026-04-26T15:14:04Z",
+  "source_execution_manifest": "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\execution-manifest.json",
+  "items": [
+    "Execution status: completed_with_failures",
+    "Executed units: 8; failures: 2",
+    "Specialist execution status: direct_current_session_routed"
+  ]
+}

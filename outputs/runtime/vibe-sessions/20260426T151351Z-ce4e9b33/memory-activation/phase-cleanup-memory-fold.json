@@ -1,0 +1,20 @@
+{
+  "stage": "phase_cleanup",
+  "fold_kind": "deepagent_memory_fold_local",
+  "generated_at": "2026-04-26T15:14:04Z",
+  "working_memory": [
+    "Requirement doc: C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\docs\\requirements\\2026-04-27-vibe-c-users-wuaha-codex-skills-vibe-skill-md-md.md",
+    "Execution plan: C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\docs\\plans\\2026-04-27-vibe-c-users-wuaha-codex-skills-vibe-skill-md-md-execution-plan.md",
+    "Runtime status: completed_with_failures"
+  ],
+  "tool_memory": [
+    "Execution manifest: C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\execution-manifest.json",
+    "Cleanup receipt: C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\cleanup-receipt.json"
+  ],
+  "evidence_anchors": [
+    "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\docs\\requirements\\2026-04-27-vibe-c-users-wuaha-codex-skills-vibe-skill-md-md.md",
+    "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\docs\\plans\\2026-04-27-vibe-c-users-wuaha-codex-skills-vibe-skill-md-md-execution-plan.md",
+    "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\execution-manifest.json",
+    "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\cleanup-receipt.json"
+  ]
+}

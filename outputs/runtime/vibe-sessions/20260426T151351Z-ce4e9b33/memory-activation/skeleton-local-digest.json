@@ -1,0 +1,17 @@
+{
+  "stage": "skeleton_check",
+  "owner": "state_store",
+  "status": "fallback_local_digest",
+  "generated_at": "2026-04-26T15:13:52Z",
+  "source_receipt_path": "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\skeleton-receipt.json",
+  "items": [
+    "Task focus: [$vibe](C:\\Users\\wuaha\\.codex\\skills\\vibe\\SKILL.md) 阅读文档.md和里面的图片素材，整理需求",
+    "Git branch: ",
+    "All required governed runtime prerequisite paths are present."
+  ],
+  "budget": {
+    "top_k": 3,
+    "max_tokens": 96,
+    "max_chars_per_item": 220
+  }
+}

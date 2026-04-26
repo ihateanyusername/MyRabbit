@@ -1,0 +1,34 @@
+{
+  "stage": "requirement_doc",
+  "source_stage": "bounded_memory_recall",
+  "owner": "state_store",
+  "disclosure_level": "decision_focused",
+  "generated_at": "2026-04-26T15:14:00Z",
+  "capsule_count": 1,
+  "selected_capsules": [
+    {
+      "capsule_id": "f967e2261c935231",
+      "owner": "Cognee",
+      "lane": "cognee",
+      "kind": "entity_relation_ingest",
+      "updated_at": "2026-04-22T16:03:14Z",
+      "title": "Cognee relation: vibe-c-users-wuaha-codex-skills-vibe-skill-md-1-characterbasev2 specified_by 2026-04-23-vibe-c-users-wuaha-codex-skills-vib...",
+      "why_now": "Matched Cognee memory for requirement_doc.",
+      "expansion_ref": "C:\\Users\\wuaha\\Documents\\Git\\MyRabbit\\outputs\\runtime\\vibe-sessions\\20260426T151351Z-ce4e9b33\\memory-backend\\cognee-read-response.json#f967e2261c935231",
+      "summary_lines": [
+        "Cognee relation: vibe-c-users-wuaha-codex-skills-vibe-skill-md-1-characterbasev2 specified_by 2026-04-23-vibe-c-users-wuaha-codex-skills-vibe-skill-md-1-characterbasev2.md",
+        "specified_by"
+      ]
+    }
+  ],
+  "items": [
+    "Cognee relation: vibe-c-users-wuaha-codex-skills-vibe-skill-md-1-characterbasev2 specified_by 2026-04-23-vibe-c-users-wuaha-codex-skills-vibe-skill-md-1-characterbasev2.md",
+    "specified_by"
+  ],
+  "estimated_tokens": 46,
+  "budget": {
+    "top_k": 2,
+    "max_tokens": 120,
+    "max_chars_per_item": 260
+  }
+}

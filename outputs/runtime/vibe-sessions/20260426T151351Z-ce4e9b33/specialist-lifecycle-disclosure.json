@@ -1,0 +1,215 @@
+{
+  "enabled": true,
+  "truth_model": "routing_consultation_execution_separated",
+  "layer_count": 4,
+  "skill_count": 6,
+  "skill_ids": [
+    "docs-write",
+    "scholarly-publishing",
+    "brainstorming",
+    "writing-plans",
+    "autonomous-builder",
+    "cancel-ralph"
+  ],
+  "layers": [
+    {
+      "layer_id": "discussion_routing",
+      "truth_layer": "routing",
+      "stage": "runtime_input_freeze",
+      "skill_count": 6,
+      "skills": [
+        {
+          "skill_id": "docs-write",
+          "why_now": "top ranked specialist candidate from pack 'docs-media' via fallback_task_default",
+          "source": "route_ranked",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md",
+          "native_skill_description": "Write documentation following Metabase's conversational, clear, and user-focused style. Use when creating or editing documentation files (markdown, MDX, etc.).",
+          "state": "routed"
+        },
+        {
+          "skill_id": "scholarly-publishing",
+          "why_now": "top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default",
+          "source": "route_ranked",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"End-to-end scholarly publishing workflow: manuscript → figures → LaTeX/Word → submission → revision/rebuttal → camera-ready. Includes meta-rules, checklists, repo structure, and case-based guidance.\"",
+          "state": "routed"
+        },
+        {
+          "skill_id": "brainstorming",
+          "why_now": "pack stage assistant from 'orchestration-core'",
+          "source": "route_stage_assistant",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.\"",
+          "state": "routed"
+        },
+        {
+          "skill_id": "writing-plans",
+          "why_now": "pack stage assistant from 'orchestration-core'",
+          "source": "route_stage_assistant",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md",
+          "native_skill_description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+          "state": "routed"
+        },
+        {
+          "skill_id": "autonomous-builder",
+          "why_now": "pack stage assistant from 'orchestration-core'",
+          "source": "route_stage_assistant",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"Full-stack software development agent for design, implementation, testing, and deployment. Use when the user explicitly asks for end-to-end project creation, feature development, bug fixing, or code refactoring.\"",
+          "state": "routed"
+        },
+        {
+          "skill_id": "cancel-ralph",
+          "why_now": "pack stage assistant from 'orchestration-core'",
+          "source": "route_stage_assistant",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md",
+          "native_skill_description": "Codex-compatible cancel command for Ralph loop state, preserving the original command name.",
+          "state": "routed"
+        }
+      ],
+      "rendered_text": "Discussion-chain routed Skills:\n- docs-write: top ranked specialist candidate from pack 'docs-media' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)\n- writing-plans: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md)\n- autonomous-builder: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md)\n- cancel-ralph: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md)"
+    },
+    {
+      "layer_id": "discussion_consultation",
+      "truth_layer": "consultation",
+      "stage": "deep_interview",
+      "skill_count": 3,
+      "skills": [
+        {
+          "skill_id": "docs-write",
+          "why_now": "top ranked specialist candidate from pack 'docs-media' via fallback_task_default",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md",
+          "native_skill_description": "Write documentation following Metabase's conversational, clear, and user-focused style. Use when creating or editing documentation files (markdown, MDX, etc.).",
+          "state": "routed_pending_current_session",
+          "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess."
+        },
+        {
+          "skill_id": "scholarly-publishing",
+          "why_now": "top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"End-to-end scholarly publishing workflow: manuscript → figures → LaTeX/Word → submission → revision/rebuttal → camera-ready. Includes meta-rules, checklists, repo structure, and case-based guidance.\"",
+          "state": "routed_pending_current_session",
+          "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess."
+        },
+        {
+          "skill_id": "brainstorming",
+          "why_now": "pack stage assistant from 'orchestration-core'",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.\"",
+          "state": "routed_pending_current_session",
+          "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess."
+        }
+      ],
+      "rendered_text": "Specialist consultation routing during discussion:\n- docs-write: top ranked specialist candidate from pack 'docs-media' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)"
+    },
+    {
+      "layer_id": "planning_consultation",
+      "truth_layer": "consultation",
+      "stage": "requirement_doc",
+      "skill_count": 3,
+      "skills": [
+        {
+          "skill_id": "docs-write",
+          "why_now": "top ranked specialist candidate from pack 'docs-media' via fallback_task_default",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md",
+          "native_skill_description": "Write documentation following Metabase's conversational, clear, and user-focused style. Use when creating or editing documentation files (markdown, MDX, etc.).",
+          "state": "routed_pending_current_session",
+          "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess."
+        },
+        {
+          "skill_id": "scholarly-publishing",
+          "why_now": "top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"End-to-end scholarly publishing workflow: manuscript → figures → LaTeX/Word → submission → revision/rebuttal → camera-ready. Includes meta-rules, checklists, repo structure, and case-based guidance.\"",
+          "state": "routed_pending_current_session",
+          "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess."
+        },
+        {
+          "skill_id": "brainstorming",
+          "why_now": "pack stage assistant from 'orchestration-core'",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md",
+          "native_skill_description": "\"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.\"",
+          "state": "routed_pending_current_session",
+          "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess."
+        }
+      ],
+      "rendered_text": "Specialist consultation routing during planning:\n- docs-write: top ranked specialist candidate from pack 'docs-media' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)"
+    },
+    {
+      "layer_id": "execution_dispatch",
+      "truth_layer": "execution",
+      "stage": "plan_execute",
+      "skill_count": 6,
+      "skills": [
+        {
+          "skill_id": "docs-write",
+          "why_now": "approved for execution-time specialist dispatch under governed vibe",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md",
+          "native_skill_entrypoint_raw": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md",
+          "entrypoint_path_state": "resolved",
+          "entrypoint_missing": false,
+          "entrypoint_path_invalid": false,
+          "native_skill_description": "Write documentation following Metabase's conversational, clear, and user-focused style. Use when creating or editing documentation files (markdown, MDX, etc.).",
+          "state": "disclosed_for_execution"
+        },
+        {
+          "skill_id": "scholarly-publishing",
+          "why_now": "approved for execution-time specialist dispatch under governed vibe",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md",
+          "native_skill_entrypoint_raw": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md",
+          "entrypoint_path_state": "resolved",
+          "entrypoint_missing": false,
+          "entrypoint_path_invalid": false,
+          "native_skill_description": "\"End-to-end scholarly publishing workflow: manuscript → figures → LaTeX/Word → submission → revision/rebuttal → camera-ready. Includes meta-rules, checklists, repo structure, and case-based guidance.\"",
+          "state": "disclosed_for_execution"
+        },
+        {
+          "skill_id": "brainstorming",
+          "why_now": "approved for execution-time specialist dispatch under governed vibe",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md",
+          "native_skill_entrypoint_raw": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md",
+          "entrypoint_path_state": "resolved",
+          "entrypoint_missing": false,
+          "entrypoint_path_invalid": false,
+          "native_skill_description": "\"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.\"",
+          "state": "disclosed_for_execution"
+        },
+        {
+          "skill_id": "writing-plans",
+          "why_now": "approved for execution-time specialist dispatch under governed vibe",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md",
+          "native_skill_entrypoint_raw": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md",
+          "entrypoint_path_state": "resolved",
+          "entrypoint_missing": false,
+          "entrypoint_path_invalid": false,
+          "native_skill_description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+          "state": "disclosed_for_execution"
+        },
+        {
+          "skill_id": "autonomous-builder",
+          "why_now": "approved for execution-time specialist dispatch under governed vibe",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md",
+          "native_skill_entrypoint_raw": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md",
+          "entrypoint_path_state": "resolved",
+          "entrypoint_missing": false,
+          "entrypoint_path_invalid": false,
+          "native_skill_description": "\"Full-stack software development agent for design, implementation, testing, and deployment. Use when the user explicitly asks for end-to-end project creation, feature development, bug fixing, or code refactoring.\"",
+          "state": "disclosed_for_execution"
+        },
+        {
+          "skill_id": "cancel-ralph",
+          "why_now": "approved for execution-time specialist dispatch under governed vibe",
+          "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md",
+          "native_skill_entrypoint_raw": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md",
+          "entrypoint_path_state": "resolved",
+          "entrypoint_missing": false,
+          "entrypoint_path_invalid": false,
+          "native_skill_description": "Codex-compatible cancel command for Ralph loop state, preserving the original command name.",
+          "state": "disclosed_for_execution"
+        }
+      ],
+      "rendered_text": "Execution-chain specialist disclosure:\n- docs-write: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)\n- writing-plans: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md)\n- autonomous-builder: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md)\n- cancel-ralph: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md)"
+    }
+  ],
+  "rendered_text": "Discussion-chain routed Skills:\n- docs-write: top ranked specialist candidate from pack 'docs-media' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)\n- writing-plans: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md)\n- autonomous-builder: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md)\n- cancel-ralph: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md)\n\nSpecialist consultation routing during discussion:\n- docs-write: top ranked specialist candidate from pack 'docs-media' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)\n\nSpecialist consultation routing during planning:\n- docs-write: top ranked specialist candidate from pack 'docs-media' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: top ranked specialist candidate from pack 'scholarly-publishing-workflow' via fallback_task_default (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: pack stage assistant from 'orchestration-core' (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)\n\nExecution-chain specialist disclosure:\n- docs-write: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\docs-write\\SKILL.runtime-mirror.md)\n- scholarly-publishing: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\scholarly-publishing\\SKILL.runtime-mirror.md)\n- brainstorming: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md)\n- writing-plans: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\writing-plans\\SKILL.runtime-mirror.md)\n- autonomous-builder: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\autonomous-builder\\SKILL.runtime-mirror.md)\n- cancel-ralph: approved for execution (C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\cancel-ralph\\SKILL.runtime-mirror.md)"
+}

@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "status": "backend_write",
+  "lane": "cognee",
+  "store_path": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\.vibeskills\\memory\\workspace-memory-plane.jsonl",
+  "project_key": "vibe",
+  "project_key_source": "workspace_plane",
+  "item_count": 3,
+  "items": [
+    "Persisted Cognee relation: vibe-c-users-wuaha-codex-skills-vibe-skill-md-md specified_by 2026-04-27-vibe-c-users-wuaha-codex-skills-vibe-skill-md-md.md",
+    "Persisted Cognee relation: vibe-c-users-wuaha-codex-skills-vibe-skill-md-md planned_in 2026-04-27-vibe-c-users-wuaha-codex-skills-vibe-skill-md-md-execution-plan.md",
+    "Persisted Cognee relation: vibe-c-users-wuaha-codex-skills-vibe-skill-md-md executed_as execution-manifest.json"
+  ],
+  "capsule_count": 3,
+  "capsules": [
+    {
+      "capsule_id": "6f1c3ec474067860",
+      "owner": "Cognee",
+      "lane": "cognee",
+      "kind": "entity_relation_ingest",
+      "disclosure_level": "bounded",
+      "summary": "specified_by",
+      "updated_at": "2026-04-26T15:14:04Z"
+    },
+    {
+      "capsule_id": "4a6d44da4378e94d",
+      "owner": "Cognee",
+      "lane": "cognee",
+      "kind": "entity_relation_ingest",
+      "disclosure_level": "bounded",
+      "summary": "planned_in",
+      "updated_at": "2026-04-26T15:14:04Z"
+    },
+    {
+      "capsule_id": "5551a59a1089111e",
+      "owner": "Cognee",
+      "lane": "cognee",
+      "kind": "entity_relation_ingest",
+      "disclosure_level": "bounded",
+      "summary": "executed_as",
+      "updated_at": "2026-04-26T15:14:04Z"
+    }
+  ],
+  "suppressed_count": 0,
+  "workspace_memory_plane": {
+    "schema_version": 1,
+    "workspace_root": "C:\\Users\\wuaha\\.codex\\skills\\vibe",
+    "workspace_sidecar_root": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\.vibeskills",
+    "descriptor_path": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\.vibeskills\\project.json",
+    "workspace_id": "ws:519a620eb3a153bdf31da00c",
+    "plane_path": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\.vibeskills\\memory\\workspace-memory-plane.jsonl"
+  },
+  "driver_mode": "compatibility_shell",
+  "generated_at": "2026-04-26T15:14:04Z"
+}

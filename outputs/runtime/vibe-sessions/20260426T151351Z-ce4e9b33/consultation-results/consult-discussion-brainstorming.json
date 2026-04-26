@@ -1,0 +1,34 @@
+{
+  "unit_id": "consult-discussion-brainstorming",
+  "kind": "specialist_consultation",
+  "status": "routed_pending_current_session",
+  "verification_passed": false,
+  "skill_id": "brainstorming",
+  "consultation_window_id": "discussion",
+  "consultation_stage": "deep_interview",
+  "live_native_execution": false,
+  "degraded": false,
+  "blocked": false,
+  "direct_route": true,
+  "consultation_mode": "direct_current_session_route",
+  "native_skill_entrypoint": "C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md",
+  "summary": "Specialist was routed for direct current-session consultation. Load C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md in the current host session instead of launching a hidden host subprocess.",
+  "consultation_notes": [
+    "No hidden host subprocess was launched for this specialist.",
+    "The current host session should load the specialist entrypoint directly and keep vibe as the only runtime authority."
+  ],
+  "adoption_notes": [
+    "Use the specialist path already frozen in native_skill_entrypoint for same-session loading.",
+    "Do not replace vibe governance; absorb specialist guidance back into the governed artifact flow."
+  ],
+  "verification_notes": [
+    "consultation_mode:direct_current_session_route",
+    "hidden_host_subprocess:false",
+    "native_skill_entrypoint:C:\\Users\\wuaha\\.codex\\skills\\vibe\\bundled\\skills\\brainstorming\\SKILL.runtime-mirror.md"
+  ],
+  "observed_changed_files": [],
+  "response_json_path": null,
+  "prompt_path": null,
+  "schema_path": null,
+  "result_reason": "pending_direct_current_session_route"
+}
