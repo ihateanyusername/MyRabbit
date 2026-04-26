@@ -1,3 +1,4 @@
+  <style>
 :root {
   --bg-top: #eef5ff;
   --bg-bottom: #c9dcff;
@@ -36,7 +37,7 @@ html, body {
 body {
   background-image:
     linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05)),
-    url("./背景样例.png");
+    url("背景样例.png");
   background-size: cover;
   background-position: center top;
 }
@@ -61,8 +62,14 @@ button {
 }
 
 .hero {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   text-align: center;
-  padding: 18px 0 12px;
+  padding: calc(env(safe-area-inset-top) + 12px) 0 16px;
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, rgba(239, 245, 255, 0.96), rgba(239, 245, 255, 0.78));
+  backdrop-filter: blur(14px);
 }
 
 .hero__badge {
@@ -134,12 +141,6 @@ button {
 
 .page--active {
   display: block;
-}
-
-.top-switch {
-  display: flex;
-  gap: 12px;
-  margin: 22px 0;
 }
 
 .chip,
@@ -538,7 +539,7 @@ button {
   width: 100%;
   aspect-ratio: 1 / 0.82;
   margin-top: 18px;
-  background-image: url("./图片素材.png");
+  background-image: url("背景样例.png");
   background-size: 200% 300%;
   background-repeat: no-repeat;
   border-radius: var(--radius-lg);
@@ -743,6 +744,13 @@ button {
   color: #fff;
 }
 
+body {
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center top;
+  background-size: 100% 100%, min(86vw, 760px) auto;
+  background-attachment: fixed, fixed;
+}
+
 .modal {
   width: min(680px, calc(100vw - 24px));
   border: 0;
@@ -927,17 +935,23 @@ button {
     padding: 18px;
   }
 
-  .top-switch {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .hero__badge {
     min-height: 68px;
     padding: 12px 26px;
+  }
+
+  .hero {
+    padding: calc(env(safe-area-inset-top) + 10px) 0 14px;
+  }
+
+  body {
+    background-size: 100% 100%, min(92vw, 520px) auto;
+    background-position: center top, center 10px;
   }
 
   .weather-card {
     min-height: 400px;
   }
 }
+
+

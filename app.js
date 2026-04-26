@@ -15,6 +15,16 @@ const DEFAULT_CHECKLIST_ITEMS = [
   { id: "weigh", label: "称重", repeatable: true, period: "daily", startDate: "", endDate: "" },
   { id: "nails", label: "剪指甲", repeatable: true, period: "biweekly", startDate: "", endDate: "" },
 ];
+const EASTER_EGG_CHECKLIST_ITEM = {
+  id: "easter_boyfriend_praise",
+  label: "夸夸你的亲亲男朋友",
+  repeatable: true,
+  period: "daily",
+  startDate: "",
+  endDate: "",
+  hiddenFromEditor: true,
+  isEasterEgg: true,
+};
 const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
 let loadedStorageKey = STORAGE_KEY;
 
@@ -113,6 +123,7 @@ function loadState() {
     records: normalizeRecords(initial.records),
     checklist: initial.checklist || {},
     checklistItems: normalizeChecklistItems(initial.checklistItems || initial.checklistDefinitions),
+    specialChecklistDates: normalizeSpecialChecklistDates(initial.specialChecklistDates),
     settings: {
       selectedArea: initial.settings?.selectedArea || migrateLegacyCity(initial.settings?.selectedCity),
     },
@@ -140,6 +151,7 @@ function createDefaultAppState() {
     records: {},
     checklist: {},
     checklistItems: normalizeChecklistItems(),
+    specialChecklistDates: {},
     settings: {
       selectedArea: DEFAULT_AREA,
     },
@@ -156,6 +168,17 @@ function normalizeChecklistItems(items = DEFAULT_CHECKLIST_ITEMS) {
     startDate: item.repeatable === false ? (item.startDate || getLocalDateString(new Date())) : "",
     endDate: item.repeatable === false ? (item.endDate || getLocalDateString(new Date())) : "",
   }));
+}
+
+function normalizeSpecialChecklistDates(schedule) {
+  if (!schedule || typeof schedule !== "object") return {};
+  const normalized = {};
+  Object.entries(schedule).forEach(([monthKey, dates]) => {
+    if (!/^\d{4}-\d{2}$/.test(monthKey) || !Array.isArray(dates)) return;
+    const validDates = [...new Set(dates.filter((date) => isValidDateKey(date)))].sort();
+    if (validDates.length) normalized[monthKey] = validDates;
+  });
+  return normalized;
 }
 
 function normalizeRecords(records) {
@@ -764,12 +787,20 @@ function hydrateChecklistState() {
       state.app.checklist[item.id] = { checked: false, periodKey: currentKey };
     }
   });
+  const easterEggItem = getTodayEasterEggChecklistItem();
+  if (easterEggItem) {
+    const easterEggKey = getChecklistPeriodKey(easterEggItem, currentPeriodKeys);
+    const easterEggEntry = state.app.checklist[easterEggItem.id];
+    if (!easterEggEntry || easterEggEntry.periodKey !== easterEggKey) {
+      state.app.checklist[easterEggItem.id] = { checked: false, periodKey: easterEggKey };
+    }
+  }
   saveState();
 }
 
 function renderChecklist() {
   hydrateChecklistState();
-  const visibleItems = getVisibleChecklistItems();
+  const visibleItems = getTodayChecklistItems();
   const completed = visibleItems.filter((item) => state.app.checklist[item.id]?.checked).length;
   elements.checklistSummary.textContent = `已完成 ${completed} / ${visibleItems.length}`;
   renderChecklistStatusBunny(visibleItems, completed);
@@ -833,6 +864,51 @@ function getVisibleChecklistItems() {
     if (!item.startDate || !item.endDate) return false;
     return item.startDate <= businessDate && businessDate <= item.endDate;
   });
+}
+
+function getTodayChecklistItems() {
+  const items = [...getVisibleChecklistItems()];
+  const easterEggItem = getTodayEasterEggChecklistItem();
+  if (easterEggItem) items.push(easterEggItem);
+  return items;
+}
+
+function getTodayEasterEggChecklistItem() {
+  const businessDate = getBusinessDate();
+  return shouldShowEasterEggChecklist(businessDate) ? EASTER_EGG_CHECKLIST_ITEM : null;
+}
+
+function shouldShowEasterEggChecklist(dateKey) {
+  if (dateKey === "2026-04-26" || dateKey === "2026-04-30") return true;
+  if (dateKey < "2026-05-01") return false;
+  const monthDates = ensureMonthlyEasterEggDates(getMonthKey(dateKey));
+  return monthDates.includes(dateKey);
+}
+
+function ensureMonthlyEasterEggDates(monthKey) {
+  if (state.app.specialChecklistDates[monthKey]?.length) {
+    return state.app.specialChecklistDates[monthKey];
+  }
+  if (monthKey < "2026-05") return [];
+  const generatedDates = generateMonthlyEasterEggDates(monthKey);
+  state.app.specialChecklistDates[monthKey] = generatedDates;
+  saveState();
+  return generatedDates;
+}
+
+function generateMonthlyEasterEggDates(monthKey) {
+  const [year, month] = monthKey.split("-").map(Number);
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const pool = [];
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    pool.push(`${monthKey}-${String(day).padStart(2, "0")}`);
+  }
+  const selected = [];
+  while (pool.length && selected.length < 2) {
+    const index = Math.floor(Math.random() * pool.length);
+    selected.push(pool.splice(index, 1)[0]);
+  }
+  return selected.sort();
 }
 
 function openChecklistModal() {
@@ -1016,6 +1092,10 @@ function getBusinessDate() {
   return getLocalDateString(shiftByResetHour(new Date()));
 }
 
+function getMonthKey(dateKey) {
+  return dateKey.slice(0, 7);
+}
+
 function getJapanHour() {
   const hour = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Asia/Tokyo",
@@ -1139,3 +1219,5 @@ function escapeHtml(text) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
+
