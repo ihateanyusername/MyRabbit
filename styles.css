@@ -70,7 +70,6 @@ button {
   padding: calc(env(safe-area-inset-top) + 12px) 0 16px;
   margin-bottom: 8px;
   background: linear-gradient(180deg, rgba(239, 245, 255, 0.96), rgba(239, 245, 255, 0.78));
-  backdrop-filter: blur(14px);
 }
 
 .hero__badge {
@@ -229,6 +228,13 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.calendar-head-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .calendar-mode-button {
@@ -946,6 +952,10 @@ body {
 
   .calendar-mode-button {
     flex: 0 0 auto;
+  }
+
+  .calendar-head-main {
+    width: 100%;
   }
 
   .head-actions > *,
