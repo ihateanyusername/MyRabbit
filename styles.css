@@ -607,28 +607,44 @@ button {
 }
 
 .checklist-head-actions {
+  position: absolute;
+  left: 0%;
+  bottom: 100%;
+  transform: translateX(0) scale(1);
+  transform-origin: center bottom;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  min-width: 104px;
-  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 24px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .checklist-status-bunny {
-  width: 168px;
+  width: 100%;
   aspect-ratio: 1 / 1;
-  margin-top: -10px;
-  margin-right: 4px;
+  margin: 0;
   background-size: 200% 300%;
+  opacity: 0.95;
+  filter: saturate(0.98) brightness(1.02);
 }
 
 #edit-checklist-button {
   margin-right: 0;
 }
 
+.checklist-page .card,
+#checklist-page .card {
+  position: relative;
+  overflow: hidden;
+}
+
 .checklist-list {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 10px;
+  padding-bottom: 150px;
 }
 
 .checklist-item {
@@ -638,11 +654,11 @@ button {
   align-items: center;
   padding: 14px 16px;
   border-radius: var(--radius-md);
-  background: rgba(248, 251, 255, 0.95);
+  background: rgba(248, 251, 255, 0.72);
 }
 
 .checklist-item--done {
-  background: rgba(225, 244, 229, 0.96);
+  background: rgba(225, 244, 229, 0.66);
 }
 
 .checklist-item--animate .checklist-bunny-burst {
@@ -938,15 +954,12 @@ body {
   }
 
   .checklist-head-actions {
-    justify-content: flex-end;
-    min-width: 56px;
-    margin-left: auto;
+    width: calc(100% - 20px);
+    bottom: 74px;
   }
 
   .checklist-status-bunny {
-    width: 116px;
-    margin-top: 0;
-    margin-right: 0;
+    width: 100%;
   }
 
   #edit-checklist-button {
@@ -1059,6 +1072,21 @@ body {
   .detail-card {
     min-height: 200px;
     padding: 14px;
+  }
+
+  .checklist-list {
+    gap: 8px;
+    padding-bottom: 132px;
+  }
+
+  .checklist-item {
+    padding: 12px 14px;
+    gap: 10px;
+    background: rgba(248, 251, 255, 0.62);
+  }
+
+  .checklist-item--done {
+    background: rgba(225, 244, 229, 0.58);
   }
 
   .detail-image {
