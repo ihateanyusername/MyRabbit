@@ -32,7 +32,7 @@ const state = {
   activePage: "weight",
   chartRange: "week",
   selectedDate: getLocalDateString(new Date()),
-  calendarCursor: startOfMonth(new Date()),
+  calendarCursor: getMonday(new Date()),
   areaData: null,
   weather: null,
   weatherError: "",
@@ -236,12 +236,12 @@ function bindEvents() {
   });
 
   elements.prevMonth.addEventListener("click", () => {
-    state.calendarCursor = addMonths(state.calendarCursor, -1);
+    state.calendarCursor = addDays(state.calendarCursor, -7);
     renderCalendar();
   });
 
   elements.nextMonth.addEventListener("click", () => {
-    state.calendarCursor = addMonths(state.calendarCursor, 1);
+    state.calendarCursor = addDays(state.calendarCursor, 7);
     renderCalendar();
   });
 
@@ -426,7 +426,7 @@ function renderChart() {
   const floor = Math.floor((minWeight - range * 0.2) / 5) * 5;
   const ceil = Math.ceil((maxWeight + range * 0.2) / 5) * 5;
   const width = 640;
-  const height = 260;
+  const height = 190;
   const pad = { left: 54, top: 24, right: 18, bottom: 44 };
   const points = records.map((record, index) => {
     const x = pad.left + (index * (width - pad.left - pad.right)) / Math.max(records.length - 1, 1);
@@ -465,7 +465,7 @@ function renderTable() {
   elements.tableEmpty.classList.add("hidden");
   elements.tableBody.innerHTML = records.map((record) => `
     <tr data-record-date="${record.date}">
-      <td>${formatDate(record.date)}</td>
+      <td>${formatShortDate(record.date)}</td>
       <td>${record.weight} g</td>
       <td><strong>${formatDelta(record.delta)}</strong></td>
       <td>${record.food} g</td>
@@ -475,7 +475,7 @@ function renderTable() {
   [...elements.tableBody.querySelectorAll("tr")].forEach((row) => {
     row.addEventListener("click", () => {
       state.selectedDate = row.dataset.recordDate;
-      state.calendarCursor = startOfMonth(parseDateFromString(state.selectedDate));
+      state.calendarCursor = getMonday(parseDateFromString(state.selectedDate));
       renderCalendar();
       renderRecordDetail();
     });
@@ -483,26 +483,23 @@ function renderTable() {
 }
 
 function renderCalendar() {
-  const year = state.calendarCursor.getFullYear();
-  const month = state.calendarCursor.getMonth();
-  const firstDay = new Date(year, month, 1);
-  const offset = firstDay.getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const weekStart = getMonday(state.calendarCursor);
+  const weekEnd = addDays(weekStart, 6);
   const cells = [];
-  elements.calendarTitle.textContent = `${year}年${month + 1}月`;
+  elements.calendarTitle.textContent = `${formatShortDate(getLocalDateString(weekStart))} - ${formatShortDate(getLocalDateString(weekEnd))}`;
   WEEKDAYS.forEach((weekday) => cells.push(`<div class="calendar__label">${weekday}</div>`));
-  for (let i = 0; i < offset; i += 1) cells.push(`<div class="calendar__day" data-disabled="true"></div>`);
-  for (let day = 1; day <= daysInMonth; day += 1) {
-    const date = new Date(year, month, day);
+  for (let day = 0; day < 7; day += 1) {
+    const date = addDays(weekStart, day);
     const dateKey = getLocalDateString(date);
     const hasRecord = Boolean(state.app.records[dateKey]);
     const selected = state.selectedDate === dateKey;
-    cells.push(`<button class="calendar__day ${selected ? "calendar__day--selected" : ""}" type="button" data-date="${dateKey}" data-has-record="${hasRecord}">${day}</button>`);
+    cells.push(`<button class="calendar__day ${selected ? "calendar__day--selected" : ""}" type="button" data-date="${dateKey}" data-has-record="${hasRecord}">${date.getDate()}</button>`);
   }
   elements.calendar.innerHTML = cells.join("");
   [...elements.calendar.querySelectorAll("[data-date]")].forEach((button) => {
     button.addEventListener("click", () => {
       state.selectedDate = button.dataset.date;
+      state.calendarCursor = getMonday(parseDateFromString(button.dataset.date));
       renderCalendar();
       renderRecordDetail();
     });
@@ -588,7 +585,7 @@ function onRecordSave(event) {
   normalizeRecordMetrics();
   saveState();
   state.selectedDate = date;
-  state.calendarCursor = startOfMonth(parseDateFromString(date));
+  state.calendarCursor = getMonday(parseDateFromString(date));
   renderRecordPage();
   closeModal();
 }

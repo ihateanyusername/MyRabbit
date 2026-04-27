@@ -268,7 +268,7 @@ button {
 
 #weight-chart {
   width: 100%;
-  height: 260px;
+  height: 190px;
   display: block;
 }
 
@@ -289,7 +289,8 @@ button {
 
 .record-table {
   width: 100%;
-  min-width: 620px;
+  min-width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   background: rgba(255, 255, 255, 0.85);
 }
@@ -299,6 +300,7 @@ button {
   padding: 14px 12px;
   text-align: left;
   border-bottom: 1px solid rgba(218, 229, 247, 0.95);
+  white-space: nowrap;
 }
 
 .record-table th {
@@ -329,7 +331,7 @@ button {
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
 }
 
 .calendar__label,
@@ -344,12 +346,12 @@ button {
 }
 
 .calendar__day {
-  min-height: 56px;
+  min-height: 46px;
   border-radius: 18px;
   background: rgba(245, 249, 255, 0.92);
   color: var(--text);
   position: relative;
-  padding: 10px 6px;
+  padding: 8px 4px;
 }
 
 .calendar__day[data-disabled="true"] {
@@ -374,7 +376,7 @@ button {
 }
 
 .detail-card {
-  min-height: 360px;
+  min-height: 260px;
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, rgba(249, 251, 255, 0.96), rgba(238, 245, 255, 0.92));
   padding: 20px;
@@ -391,7 +393,7 @@ button {
   margin-top: 14px;
   display: block;
   object-fit: cover;
-  max-height: 240px;
+  max-height: 180px;
 }
 
 .city-picker {
@@ -466,7 +468,7 @@ button {
 .weather-card {
   border-radius: var(--radius-lg);
   padding: 20px;
-  min-height: 450px;
+  min-height: 260px;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
 }
 
@@ -491,13 +493,14 @@ button {
 }
 
 .alert-badge {
-  min-height: 46px;
+  min-height: 36px;
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   display: inline-flex;
   align-items: center;
   font-weight: 700;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
 }
 
 .alert-badge--warm {
@@ -517,29 +520,30 @@ button {
 
 .weather-card h3 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
 }
 
 .weather-icon {
-  font-size: 3rem;
-  margin-top: 16px;
+  font-size: 2rem;
+  margin-top: 10px;
 }
 
 .weather-temp {
-  margin-top: 14px;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-top: 10px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
 }
 
 .weather-text,
 .weather-range {
-  margin-top: 10px;
+  margin-top: 8px;
+  font-size: 0.95rem;
 }
 
 .bunny-sprite {
   width: 100%;
   aspect-ratio: 1 / 0.82;
-  margin-top: 18px;
+  margin-top: 12px;
   background-image: url("图片素材.png");
   background-size: 200% 300%;
   background-repeat: no-repeat;
@@ -951,8 +955,106 @@ body {
     background-position: center top, center 10px;
   }
 
+  #weight-chart {
+    height: 160px;
+  }
+
+  .table-wrap {
+    margin-top: 12px;
+  }
+
+  .record-table {
+    font-size: 0.8rem;
+  }
+
+  .record-table th,
+  .record-table td {
+    padding: 10px 6px;
+  }
+
+  .record-table th:nth-child(1),
+  .record-table td:nth-child(1) {
+    width: 16%;
+  }
+
+  .record-table th:nth-child(2),
+  .record-table td:nth-child(2),
+  .record-table th:nth-child(3),
+  .record-table td:nth-child(3),
+  .record-table th:nth-child(4),
+  .record-table td:nth-child(4) {
+    width: 18%;
+  }
+
+  .record-table th:nth-child(5),
+  .record-table td:nth-child(5) {
+    width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .record-grid {
+    gap: 14px;
+  }
+
+  .calendar {
+    gap: 6px;
+  }
+
+  .calendar__label {
+    font-size: 0.78rem;
+  }
+
+  .calendar__day {
+    min-height: 40px;
+    padding: 7px 2px;
+    font-size: 0.88rem;
+    border-radius: 14px;
+  }
+
+  .detail-card {
+    min-height: 220px;
+    padding: 16px;
+  }
+
+  .detail-image {
+    max-height: 140px;
+  }
+
   .weather-card {
-    min-height: 400px;
+    min-height: 200px;
+    padding: 16px;
+  }
+
+  .weather-card h3 {
+    font-size: 1rem;
+  }
+
+  .weather-icon {
+    font-size: 1.6rem;
+    margin-top: 8px;
+  }
+
+  .weather-temp {
+    font-size: 2rem;
+    margin-top: 8px;
+  }
+
+  .weather-text,
+  .weather-range {
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+
+  .alert-badge {
+    min-height: 32px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .bunny-sprite {
+    margin-top: 8px;
   }
 
   .bottom-nav {
