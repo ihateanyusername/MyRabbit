@@ -29,7 +29,7 @@ const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
 let loadedStorageKey = STORAGE_KEY;
 
 const state = {
-  activePage: "record",
+  activePage: "weight",
   chartRange: "week",
   selectedDate: getLocalDateString(new Date()),
   calendarCursor: startOfMonth(new Date()),
@@ -398,8 +398,8 @@ function switchPage(page, rerender = true) {
     button.classList.toggle("bottom-nav__item--active", button.classList.contains("bottom-nav__item") && isActive);
   });
   if (rerender) {
-    if (page === "record") renderRecordPage();
-    if (page === "monitor") renderMonitorPage();
+    if (page === "weight" || page === "calendar") renderRecordPage();
+    if (page === "weather" || page === "checklist") renderMonitorPage();
   }
 }
 

@@ -20,7 +20,7 @@
     </header>
 
     <main class="page-stack">
-      <section class="page page--active" id="record-page" data-page="record" aria-label="每日记录">
+      <section class="page page--active" id="weight-page" data-page="weight" aria-label="体重监控">
         <section class="card">
           <div class="card__head">
             <div>
@@ -54,7 +54,9 @@
           </div>
           <div class="empty-inline hidden" id="table-empty">尚无记录</div>
         </section>
+      </section>
 
+      <section class="page" id="calendar-page" data-page="calendar" aria-label="日历和摘要">
         <div class="record-grid">
           <section class="card">
             <div class="card__head">
@@ -78,7 +80,7 @@
         </div>
       </section>
 
-      <section class="page" id="monitor-page" data-page="monitor" aria-label="每日监控">
+      <section class="page" id="weather-page" data-page="weather" aria-label="温度监控">
         <section class="card">
           <div class="card__head">
             <div>
@@ -116,7 +118,9 @@
             </article>
           </div>
         </section>
+      </section>
 
+      <section class="page" id="checklist-page" data-page="checklist" aria-label="待办事项">
         <section class="card">
           <div class="card__head">
             <div class="checklist-head-main">
@@ -136,11 +140,17 @@
     </main>
 
     <footer class="bottom-nav">
-      <button class="bottom-nav__item bottom-nav__item--active" type="button" data-nav-target="record">
-        <span>记录</span>
+      <button class="bottom-nav__item bottom-nav__item--active" type="button" data-nav-target="weight">
+        <span>体重</span>
       </button>
-      <button class="bottom-nav__item" type="button" data-nav-target="monitor">
-        <span>监控</span>
+      <button class="bottom-nav__item" type="button" data-nav-target="calendar">
+        <span>日历</span>
+      </button>
+      <button class="bottom-nav__item" type="button" data-nav-target="weather">
+        <span>温度</span>
+      </button>
+      <button class="bottom-nav__item" type="button" data-nav-target="checklist">
+        <span>待办</span>
       </button>
     </footer>
   </div>
