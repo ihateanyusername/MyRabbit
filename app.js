@@ -31,6 +31,7 @@ let loadedStorageKey = STORAGE_KEY;
 const state = {
   activePage: "weight",
   chartRange: "week",
+  calendarView: "week",
   selectedDate: getLocalDateString(new Date()),
   calendarCursor: getMonday(new Date()),
   areaData: null,
@@ -53,6 +54,7 @@ const elements = {
   tableEmpty: document.querySelector("#table-empty"),
   calendar: document.querySelector("#calendar"),
   calendarTitle: document.querySelector("#calendar-title"),
+  calendarModeToggle: document.querySelector("#calendar-mode-toggle"),
   prevMonth: document.querySelector("#prev-month"),
   nextMonth: document.querySelector("#next-month"),
   detail: document.querySelector("#record-detail"),
@@ -235,13 +237,27 @@ function bindEvents() {
     renderRecordPage();
   });
 
+  elements.calendarModeToggle.addEventListener("click", () => {
+    state.calendarView = state.calendarView === "week" ? "month" : "week";
+    if (state.calendarView === "week") {
+      state.calendarCursor = getMonday(parseDateFromString(state.selectedDate));
+    } else {
+      state.calendarCursor = startOfMonth(parseDateFromString(state.selectedDate));
+    }
+    renderCalendar();
+  });
+
   elements.prevMonth.addEventListener("click", () => {
-    state.calendarCursor = addDays(state.calendarCursor, -7);
+    state.calendarCursor = state.calendarView === "week"
+      ? addDays(state.calendarCursor, -7)
+      : addMonths(state.calendarCursor, -1);
     renderCalendar();
   });
 
   elements.nextMonth.addEventListener("click", () => {
-    state.calendarCursor = addDays(state.calendarCursor, 7);
+    state.calendarCursor = state.calendarView === "week"
+      ? addDays(state.calendarCursor, 7)
+      : addMonths(state.calendarCursor, 1);
     renderCalendar();
   });
 
@@ -483,6 +499,11 @@ function renderTable() {
 }
 
 function renderCalendar() {
+  elements.calendarModeToggle.textContent = state.calendarView === "week" ? "展开月历" : "收起月历";
+  if (state.calendarView === "month") {
+    renderMonthCalendar();
+    return;
+  }
   const weekStart = getMonday(state.calendarCursor);
   const weekEnd = addDays(weekStart, 6);
   const cells = [];
@@ -500,6 +521,34 @@ function renderCalendar() {
     button.addEventListener("click", () => {
       state.selectedDate = button.dataset.date;
       state.calendarCursor = getMonday(parseDateFromString(button.dataset.date));
+      renderCalendar();
+      renderRecordDetail();
+    });
+  });
+}
+
+function renderMonthCalendar() {
+  const year = state.calendarCursor.getFullYear();
+  const month = state.calendarCursor.getMonth();
+  const firstDay = new Date(year, month, 1);
+  const offset = firstDay.getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const cells = [];
+  elements.calendarTitle.textContent = `${year}年${month + 1}月`;
+  WEEKDAYS.forEach((weekday) => cells.push(`<div class="calendar__label">${weekday}</div>`));
+  for (let i = 0; i < offset; i += 1) cells.push(`<div class="calendar__day" data-disabled="true"></div>`);
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const date = new Date(year, month, day);
+    const dateKey = getLocalDateString(date);
+    const hasRecord = Boolean(state.app.records[dateKey]);
+    const selected = state.selectedDate === dateKey;
+    cells.push(`<button class="calendar__day ${selected ? "calendar__day--selected" : ""}" type="button" data-date="${dateKey}" data-has-record="${hasRecord}">${day}</button>`);
+  }
+  elements.calendar.innerHTML = cells.join("");
+  [...elements.calendar.querySelectorAll("[data-date]")].forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedDate = button.dataset.date;
+      state.calendarCursor = startOfMonth(parseDateFromString(button.dataset.date));
       renderCalendar();
       renderRecordDetail();
     });

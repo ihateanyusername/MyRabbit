@@ -231,6 +231,11 @@ button {
   gap: 10px;
 }
 
+.calendar-mode-button {
+  padding: 9px 14px;
+  white-space: nowrap;
+}
+
 .primary-button,
 .ghost-button {
   border-radius: 999px;
@@ -474,15 +479,15 @@ button {
 }
 
 .weather-card__top {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   align-items: flex-start;
-  justify-content: space-between;
   gap: 12px;
 }
 
 .weather-card__content {
-  flex: 0 1 60%;
   min-width: 0;
+  max-width: 100%;
 }
 
 .weather-card--warm {
@@ -567,12 +572,10 @@ button {
 }
 
 .weather-bunny {
-  width: 40%;
-  flex: 0 0 40%;
+  width: 100%;
   min-width: 0;
   max-width: none;
   margin-top: 0;
-  flex-shrink: 0;
 }
 
 .bunny-sprite--hot {
@@ -941,6 +944,10 @@ body {
     width: 100%;
   }
 
+  .calendar-mode-button {
+    flex: 0 0 auto;
+  }
+
   .head-actions > *,
   .city-picker__row > *,
   .modal__actions > *,
@@ -1053,6 +1060,11 @@ body {
     font-size: 0.72rem;
   }
 
+  .calendar-mode-button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
   .calendar__day {
     min-height: 34px;
     padding: 5px 1px;
@@ -1134,8 +1146,7 @@ body {
   }
 
   .weather-bunny {
-    width: 40%;
-    flex: 0 0 40%;
+    width: 100%;
     min-width: 0;
     max-width: none;
     margin-top: 0;
