@@ -326,6 +326,7 @@ button {
   grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
   gap: 18px;
   margin-top: 18px;
+  align-items: start;
 }
 
 .calendar {
@@ -472,6 +473,18 @@ button {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
 }
 
+.weather-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.weather-card__content {
+  flex: 0 1 60%;
+  min-width: 0;
+}
+
 .weather-card--warm {
   background: linear-gradient(180deg, rgba(255, 246, 241, 0.96), rgba(255, 235, 232, 0.92));
 }
@@ -553,6 +566,15 @@ button {
   isolation: isolate;
 }
 
+.weather-bunny {
+  width: 40%;
+  flex: 0 0 40%;
+  min-width: 0;
+  max-width: none;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
 .bunny-sprite--hot {
   background-position: 0% 0%;
 }
@@ -593,7 +615,7 @@ button {
 }
 
 .checklist-status-bunny {
-  width: 84px;
+  width: 168px;
   aspect-ratio: 1 / 1;
   margin-top: -10px;
   margin-right: 4px;
@@ -916,19 +938,31 @@ body {
   }
 
   .checklist-head-actions {
-    justify-content: flex-start;
-    min-width: 0;
-    margin-left: 0;
+    justify-content: flex-end;
+    min-width: 56px;
+    margin-left: auto;
   }
 
   .checklist-status-bunny {
-    width: 70px;
+    width: 116px;
     margin-top: 0;
     margin-right: 0;
   }
 
   #edit-checklist-button {
     margin-right: 0;
+  }
+
+  #checklist-page .card__head {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .checklist-head-main {
+    flex: 1;
+    min-width: 0;
+    gap: 8px;
+    flex-wrap: nowrap;
   }
 }
 
@@ -964,17 +998,17 @@ body {
   }
 
   .record-table {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
   }
 
   .record-table th,
   .record-table td {
-    padding: 10px 6px;
+    padding: 8px 3px;
   }
 
   .record-table th:nth-child(1),
   .record-table td:nth-child(1) {
-    width: 16%;
+    width: 10%;
   }
 
   .record-table th:nth-child(2),
@@ -983,38 +1017,48 @@ body {
   .record-table td:nth-child(3),
   .record-table th:nth-child(4),
   .record-table td:nth-child(4) {
-    width: 18%;
+    width: 14%;
   }
 
   .record-table th:nth-child(5),
   .record-table td:nth-child(5) {
-    width: 30%;
+    width: 18%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .record-grid {
-    gap: 14px;
+    gap: 12px;
   }
 
   .calendar {
     gap: 6px;
+    align-items: start;
   }
 
   .calendar__label {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
 
   .calendar__day {
-    min-height: 40px;
-    padding: 7px 2px;
-    font-size: 0.88rem;
-    border-radius: 14px;
+    min-height: 34px;
+    padding: 5px 1px;
+    font-size: 0.82rem;
+    border-radius: 12px;
+  }
+
+  #calendar-page .card:first-child {
+    height: fit-content;
+    align-self: start;
+  }
+
+  #calendar-page .card .card__head {
+    margin-bottom: 12px;
   }
 
   .detail-card {
-    min-height: 220px;
-    padding: 16px;
+    min-height: 200px;
+    padding: 14px;
   }
 
   .detail-image {
@@ -1024,6 +1068,10 @@ body {
   .weather-card {
     min-height: 200px;
     padding: 16px;
+  }
+
+  .weather-card__top {
+    gap: 10px;
   }
 
   .weather-card h3 {
@@ -1055,6 +1103,14 @@ body {
 
   .bunny-sprite {
     margin-top: 8px;
+  }
+
+  .weather-bunny {
+    width: 40%;
+    flex: 0 0 40%;
+    min-width: 0;
+    max-width: none;
+    margin-top: 0;
   }
 
   .bottom-nav {
